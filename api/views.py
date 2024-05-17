@@ -9,9 +9,10 @@ def helloWorld(request):
 @api_view(['POST'])
 def getAnswer(request):
     question = request.data.get('question')
-    if question:
-        question = preprocess_question(question)
-        answer = generate_text_sampling_top_p_nucleus_22(question)
-        return Response({"question": question, "answer": answer})
-    else:
-        return Response({"error": "No question provided"}, status=400)
+    answer = generate_text_sampling_top_p_nucleus_22(question)
+    return Response({"answer": answer})
+
+@api_view(['POST'])
+def preprocess_question(request):
+    question = request.data.get('question')
+    return Response({"preprocessed_question": preprocess_question(question)})
