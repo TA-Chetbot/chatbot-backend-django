@@ -14,5 +14,5 @@ def getAnswer(request):
 
 @api_view(['POST'])
 def preprocess(request):
-    question = request.data.get('question')
+    question = request.data.get('text')
     return Response({"preprocessed_question": preprocess_question(question)})
