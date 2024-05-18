@@ -13,6 +13,6 @@ def getAnswer(request):
     return Response({"answer": answer})
 
 @api_view(['POST'])
-def preprocess_question(request):
+def preprocess(request):
     question = request.data.get('question')
     return Response({"preprocessed_question": preprocess_question(question)})
